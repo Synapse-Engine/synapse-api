@@ -49,7 +49,7 @@ publishing {
             from(components["java"])
             pom {
                 name = "Synapse API"
-                description = "Public Java contract for the Synapse engine."
+                description = "Public Java contract for the Synapse engine"
                 licenses {
                     license {
                         name = "MIT License"

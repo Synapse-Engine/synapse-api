@@ -1,5 +1,6 @@
 package io.synapseproject.api.model.execution;
 
+import io.synapseproject.api.model.Identifiers;
 import java.util.Objects;
 import org.jspecify.annotations.NullMarked;
 
@@ -19,10 +20,7 @@ public sealed interface NodeResult
 
   record Branch(String portId) implements NodeResult {
     public Branch {
-      Objects.requireNonNull(portId, "portId");
-      if (portId.isBlank()) {
-        throw new IllegalArgumentException("portId must not be blank");
-      }
+      portId = Identifiers.require(portId, "portId");
     }
   }
 }

@@ -1,5 +1,6 @@
 package io.synapseproject.api.model.player;
 
+import io.synapseproject.api.model.Identifiers;
 import io.synapseproject.api.model.PropertyValue;
 import java.util.Map;
 import java.util.Objects;
@@ -28,9 +29,7 @@ public record VariableContainer(
 
   private static void rejectBlankKeys(Map<String, PropertyValue> values, String name) {
     for (String key : values.keySet()) {
-      if (key.isBlank()) {
-        throw new IllegalArgumentException(name + " key must not be blank");
-      }
+      Identifiers.require(key, name + " key");
     }
   }
 }

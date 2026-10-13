@@ -1,5 +1,6 @@
 package io.synapseproject.api.model.graph;
 
+import io.synapseproject.api.model.Identifiers;
 import org.jspecify.annotations.NullMarked;
 
 @NullMarked
