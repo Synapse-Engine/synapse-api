@@ -44,17 +44,39 @@ tasks.check {
 }
 
 publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/Synapse-Engine/synapse-api")
+            credentials {
+                username =
+                    providers.gradleProperty("gpr.user")
+                        .orElse(providers.environmentVariable("GITHUB_ACTOR"))
+                        .orNull
+                password =
+                    providers.gradleProperty("gpr.key")
+                        .orElse(providers.environmentVariable("GITHUB_TOKEN"))
+                        .orNull
+            }
+        }
+    }
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
             pom {
                 name = "Synapse API"
                 description = "Public Java contract for the Synapse engine"
+                url = "https://github.com/Synapse-Engine/synapse-api"
                 licenses {
                     license {
                         name = "MIT License"
                         url = "https://opensource.org/licenses/MIT"
                     }
+                }
+                scm {
+                    connection = "scm:git:https://github.com/Synapse-Engine/synapse-api.git"
+                    developerConnection = "scm:git:ssh://git@github.com/Synapse-Engine/synapse-api.git"
+                    url = "https://github.com/Synapse-Engine/synapse-api"
                 }
             }
         }
