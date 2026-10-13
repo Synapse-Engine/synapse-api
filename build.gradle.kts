@@ -1,6 +1,7 @@
 plugins {
     `java-library`
     `maven-publish`
+    id("com.diffplug.spotless") version "8.10.4"
 }
 
 group = "io.synapseproject"
@@ -28,6 +29,18 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+spotless {
+    java {
+        googleJavaFormat("1.36.1")
+        formatAnnotations()
+        removeUnusedImports()
+    }
+}
+
+tasks.check {
+    dependsOn(tasks.spotlessCheck)
 }
 
 publishing {
