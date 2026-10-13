@@ -1,5 +1,6 @@
 package io.synapseproject.api.model.graph;
 
+import io.synapseproject.api.model.PropertyValue;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;

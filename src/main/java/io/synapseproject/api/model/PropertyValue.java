@@ -1,4 +1,4 @@
-package io.synapseproject.api.model.graph;
+package io.synapseproject.api.model;
 
 import java.math.BigDecimal;
 import java.util.List;
